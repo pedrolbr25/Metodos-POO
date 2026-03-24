@@ -1,14 +1,18 @@
+package br.com.alura.screenmatch.principal;
+
 import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
 import br.com.alura.screenmatch.calculos.calculadoraDeTempo;
 import br.com.alura.screenmatch.modelo.Episodio;
 import br.com.alura.screenmatch.modelo.Filme;
 import br.com.alura.screenmatch.modelo.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
-        Filme meuFilme = new Filme();
-        meuFilme.setNome("Vingadores");
-        meuFilme.setAnoDeLancamento(2012);
+        Filme meuFilme = new Filme("Vigadores", 2012);
+        //meuFilme.setNome("Vingadores");
+        //meuFilme.setAnoDeLancamento(2012);
         meuFilme.setDuracaoEmMinutos(180);
         System.out.println("Duração do filme: " + meuFilme.getDuracaoEmMinutos());
 
@@ -19,18 +23,18 @@ public class Principal {
         System.out.println("Total de avaliações: " + meuFilme.getTotalDeAvaliacoes());
         System.out.println(meuFilme.pegaMedia());
 
-        Serie lost = new Serie();
-        lost.setNome("lost");
-        lost.setAnoDeLancamento(2000);
+        Serie lost = new Serie("lost", 2000);
+        //lost.setNome("lost");
+        //lost.setAnoDeLancamento(2000);
         lost.exibeFichaTecnica();
         lost.setTemporadas(10);
         lost.setEpisodioPorTemporada(10);
         lost.setMinutosPorEpisodios(50);
         System.out.println("Duração para maratonar Lost: " + lost.getDuracaoEmMinutos());
 
-        Filme outroFillme = new Filme();
-        outroFillme.setNome("Jesus");
-        outroFillme.setAnoDeLancamento(2021);
+        Filme outroFillme = new Filme("Jeus", 2021);
+        //outroFillme.setNome("Jesus");
+        //outroFillme.setAnoDeLancamento(2021);
         outroFillme.setDuracaoEmMinutos(200);
 
 
@@ -48,5 +52,19 @@ public class Principal {
         episodio.setSerie(lost);
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
+
+        var filmeDoPedro = new Filme("Avatar", 2023);
+        //filmeDoPedro.setNome("Avatar");
+        //filmeDoPedro.setAnoDeLancamento(2023);
+        filmeDoPedro.setDuracaoEmMinutos(280);
+        filmeDoPedro.avalia(7);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(meuFilme);
+        listaDeFilmes.add(outroFillme);
+        listaDeFilmes.add(filmeDoPedro);
+        System.out.println("Tamanho da lista " + listaDeFilmes.size());
+        System.out.println("toString do filme " + listaDeFilmes.get(0).getNome());
+
     }
 }

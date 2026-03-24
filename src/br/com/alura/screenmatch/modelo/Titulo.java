@@ -1,12 +1,17 @@
 package br.com.alura.screenmatch.modelo;
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo> {
     public String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaDasVariacoes;
     private int totalDeAvaliacoes;
     private int duracaoEmMinutos;
+
+    public Titulo(String nome, int anoDeLancamento) {
+        this.nome = nome;
+        this.anoDeLancamento = anoDeLancamento;
+    }
 
     //ESSE METODO NAO DEVOLVE NADA "VAZIO"
     public void exibeFichaTecnica() {
@@ -59,5 +64,10 @@ public class Titulo {
     public int getTotalDeAvaliacoes() {
         return totalDeAvaliacoes;
 
+    }
+
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
     }
 }
